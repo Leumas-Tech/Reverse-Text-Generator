@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Text Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="content">
+    <div class="title">
+    <h1>Reverse Text Generator</h1>  
+    </div>   
+    <textarea id="input">
+    </textarea>
+    <div id="buttons">
+    <input type="button" id="convert" value="Convert"/>
+    <input type="button" id="clear" value="Clear"/>
+    </div>
+    <textarea id="output">
+    </textarea>   
+    </div>
+
+
+    <footer>
+        <h3>Copyright @ Leumas LLC</h3>
+    </footer>
+    
+</body>
+<script>
+    document.getElementById("convert").addEventListener("click",function(){
+let input = document.getElementById("input").value;
+
+let currentString = '';
+    let wordsarray = input.split(" ");
+    let wordArray = [];
+    for(let i = wordsarray.length-1; i>=0 ; i--){
+        let currentWord = wordsarray[i].split("");
+        // console.log(currentWord)
+        
+        for(let j = currentWord.length-1; j >=0; j--){
+            let currentLetter = currentWord[j];
+            wordArray.push(currentLetter);
+        }
+        wordArray.push(" ");
+    }
+    
+    for(let i =0; i < wordArray.length; i++){
+        let addThisLetter = wordArray[i];
+        currentString+=addThisLetter;
+    }
+    console.log(currentString);
+
+    let outputArea = document.getElementById("output");
+    outputArea.textContent = currentString;
+
+
+    let clearButton = document.getElementById("clear");
+    clearButton.addEventListener("click",function(){
+        outputArea.textContent = '';
+    })
+
+    });
+
+
+</script>
+</html>
